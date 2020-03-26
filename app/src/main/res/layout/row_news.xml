@@ -2,27 +2,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="250dp"
     android:orientation="vertical">
 <!--이미지위에 글자가 겹치게 보여질수 있게해주는 relativelayout-->
 
+    <!-- A CardView that contains a TextView -->
+    <androidx.cardview.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        card_view:cardCornerRadius="6dp">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="5dp">
+
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="200dp">
 
         <!--이미지 찌그러짐 방지 background,src로 설정-->
 
         <ImageView
 
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
             android:background="@null"
             android:src="@drawable/wine2"
             android:id="@+id/ImageView_title"/>
         <TextView
             android:id="@+id/TextView_title"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:text="text"
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
@@ -37,9 +54,19 @@
         android:id="@+id/TextView_content"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="text"
+        android:layout_alignParentStart="true"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
+        android:text="text"
         android:textSize="10sp"
-        android:ellipsize="end"/>
+        android:maxLines="2"
+        android:ellipsize="end"
+        />
+
+
+</LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
 </LinearLayout>

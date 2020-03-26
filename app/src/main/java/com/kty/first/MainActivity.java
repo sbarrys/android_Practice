@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                         email_input= s.toString();
                     }
                 RelativeLayout_login.setClickable(validation());
+
             }
 
             @Override
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s , int start,int before , int count){
-                if(s!=null) {
+                if(s!=null) { //toString 은 널일경우 에러를 반환하기에 예외처리를 해주어야한다.
                     password_input = s.toString();
                 }
 

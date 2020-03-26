@@ -1,13 +1,5 @@
 package com.kty.first;
-
-import android.content.Intent;
 import android.os.Bundle;
-import com.kty.first.R;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.RelativeLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +11,7 @@ public class NewsActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private String[] mDataset={"1","2"};
-
+    //b0e9dce621354d4bb4805cf8809d65b0   뉴스 API 키
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

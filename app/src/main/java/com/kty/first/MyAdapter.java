@@ -26,7 +26,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
+    // Provide a suitable constructor (depends on the kind of dataset)//생성자
     public MyAdapter(String[] myDataset) {
         mDataset = myDataset;
     }
@@ -48,6 +48,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(MyViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
+        //값세팅이 된다.
         holder.TextView_title.setText(mDataset[position]);
 
     }
