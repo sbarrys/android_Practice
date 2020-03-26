@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+<!--이미지위에 글자가 겹치게 보여질수 있게해주는 relativelayout-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <!--이미지 찌그러짐 방지 background,src로 설정-->
+
+        <ImageView
+
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@null"
+            android:src="@drawable/wine2"
+            android:id="@+id/ImageView_title"/>
+        <TextView
+            android:id="@+id/TextView_title"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="text"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:background="#70000000"
+            android:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/TextView_content"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="text"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textSize="10sp"
+        android:ellipsize="end"/>
+</LinearLayout>

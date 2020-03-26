@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--어떻게 색을 지정할것이냐.-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_enabled="true"><!--상태-->
+        <shape>
+            <solid android:color="#44619c"><!--컬러--></solid>
+            <corners android:radius="20dp"><!--모양--></corners>
+        </shape>
+    </item>
+
+    <item android:state_pressed="true"><!--상태-->
+        <shape>
+            <solid android:color="#49b1f2"><!--컬러--></solid>
+            <corners android:radius="20dp"><!--모양--></corners>
+        </shape>
+    </item>
+
+</selector>
