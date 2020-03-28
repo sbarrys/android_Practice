@@ -1,4 +1,6 @@
 package com.kty.first;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,8 +9,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private String[] mDataset;
+    private List<NewsData> mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -27,7 +31,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)//생성자
-    public MyAdapter(String[] myDataset) {
+    public MyAdapter(List<NewsData> myDataset) {
         mDataset = myDataset;
     }
 
@@ -49,13 +53,26 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         //값세팅이 된다.
-        holder.TextView_title.setText(mDataset[position]);
+
+        String text= mDataset.get(position).getTitle();
+        holder.TextView_title.setText(text);
+        String content =mDataset.get(position).getContent();
+        holder.TextView_content.setText(content);
+        Uri uri = Uri.parse(mDataset.get(position).getUrlToImage());
+
+        holder.ImageView_title.setImageURI(uri);
+
 
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.length;
+
+        return mDataset == null ? 0 :  mDataset.size();
     }
+    public NewsData getNews(int position) {
+        return mDataset != null ? mDataset.get(position) : null;
+    }
+
 }
