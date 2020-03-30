@@ -29,14 +29,13 @@
         android:layout_height="200dp">
 
         <!--이미지 찌그러짐 방지 background,src로 설정-->
-
-        <ImageView
-
-            android:layout_width="match_parent"
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/ImageView_title"
             android:layout_height="match_parent"
-            android:background="@null"
-            android:src="@drawable/wine2"
-            android:id="@+id/ImageView_title"/>
+            android:layout_width="match_parent"
+            />
+
+
         <TextView
             android:id="@+id/TextView_title"
             android:layout_width="match_parent"

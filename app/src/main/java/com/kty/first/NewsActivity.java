@@ -72,13 +72,10 @@ public class NewsActivity extends AppCompatActivity {
                                 JSONObject jsonObject1= articleArray.getJSONObject(i);
                                 NewsData newsData =new NewsData();
                                 newsData.setTitle(jsonObject1.getString("title"));
-                                if(!(jsonObject1.getString("content").isEmpty())){
-                                    String temp_content="";
-                                    temp_content=URLEncoder.encode(jsonObject1.getString("content"),"utf-8");
-                                    Log.d("hi",temp_content);
-                                    newsData.setContent(temp_content);
+                                if(!(jsonObject1.getString("description").isEmpty())){
+                                    newsData.setDescription(jsonObject1.getString("description"));
                                 }else{
-                                    newsData.setContent("-");
+                                    newsData.setDescription("-");
                                 }
                                 newsData.setUrlToImage(jsonObject1.getString("urlToImage"));
 
@@ -86,13 +83,12 @@ public class NewsActivity extends AppCompatActivity {
                             }
 
 
-                            mAdapter = new MyAdapter(DataList);
+                            mAdapter = new MyAdapter(DataList,NewsActivity.this);
                             recyclerView.setAdapter(mAdapter);
 
                         }catch(JSONException e){
                             e.printStackTrace();
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
+                        
                         }
 
 

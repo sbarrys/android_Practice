@@ -1,4 +1,5 @@
 package com.kty.first;
+import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
@@ -21,18 +25,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         // each data item is just a string in this case
         public TextView TextView_title;
         public TextView TextView_content;
-        public ImageView ImageView_title;
+        public SimpleDraweeView ImageView_title;
         public MyViewHolder(View v) {
             super(v);
             TextView_title=v.findViewById(R.id.TextView_title);
             TextView_content=v.findViewById(R.id.TextView_content);
-            ImageView_title=v.findViewById(R.id.ImageView_title);
+            ImageView_title= v.findViewById(R.id.ImageView_title);
             }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)//생성자
-    public MyAdapter(List<NewsData> myDataset) {
+    public MyAdapter(List<NewsData> myDataset, Context context) {
         mDataset = myDataset;
+        Fresco.initialize(context);
     }
 
     // Create new views (invoked by the layout manager)
@@ -56,10 +61,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         String text= mDataset.get(position).getTitle();
         holder.TextView_title.setText(text);
-        String content =mDataset.get(position).getContent();
-        holder.TextView_content.setText(content);
+        String description =mDataset.get(position).getDescription();
+        holder.TextView_content.setText(description);
         Uri uri = Uri.parse(mDataset.get(position).getUrlToImage());
-
         holder.ImageView_title.setImageURI(uri);
 
 

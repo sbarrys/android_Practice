@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class NewsData implements Serializable {
 
 
-    private String content;
+    private String description;
     private String title;
     private String urlToImage;
     private String status;
@@ -21,12 +21,12 @@ public class NewsData implements Serializable {
     }
 
 
-    public String getContent() {
-        return content;
+    public String getDescription() {
+        return description;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getUrlToImage() {
@@ -50,7 +50,7 @@ public class NewsData implements Serializable {
     @Override
     public String toString() {
         return "NewsData{" +
-                "content='" + content + '\'' +
+                "description='" + description + '\'' +
                 ", title='" + title + '\'' +
                 ", urlToImage='" + urlToImage + '\'' +
                 ", status='" + status + '\'' +
