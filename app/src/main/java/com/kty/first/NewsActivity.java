@@ -1,7 +1,9 @@
 package com.kty.first;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -83,12 +85,28 @@ public class NewsActivity extends AppCompatActivity {
                             }
 
 
-                            mAdapter = new MyAdapter(DataList,NewsActivity.this);
+                            mAdapter = new MyAdapter(DataList,NewsActivity.this,new View.OnClickListener(){
+                                @Override
+                                public void onClick(View v){
+                                    if(v.getTag()!=null){
+                                        int position=(int)v.getTag();
+                                        //본문만 넘길까 //전체를 다 넘길까
+                                          //2-1.하나씩 다넘기기
+                                          //2-2.한번에 다넘기기 NewsData클래스 통채로 이떄 ,importSerializable 이 필요한것이다.
+                                        Intent intent = new Intent(NewsActivity.this, NewsDetail.class);
+                                        intent.putExtra("news", ((MyAdapter)mAdapter).getNews(position));
+                                        startActivity(intent);
+
+                                    }
+
+                                }
+
+                            });
                             recyclerView.setAdapter(mAdapter);
 
                         }catch(JSONException e){
                             e.printStackTrace();
-                        
+
                         }
 
 
