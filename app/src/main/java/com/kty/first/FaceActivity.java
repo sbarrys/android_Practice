@@ -1,9 +1,17 @@
 package com.kty.first;
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.Display;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 
@@ -22,12 +30,22 @@ import com.google.firebase.ml.vision.face.FirebaseVisionFaceLandmark;
 import java.util.List;
 
 public class FaceActivity extends Activity {
+    Context mContext;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mContext=this;
+        final Point p= new Point();
+        Display display=   getWindowManager().getDefaultDisplay();
+        display.getSize(p);
+       int x=   p.x;
+        int y= p.y;
+
+
         setContentView(R.layout.act_face);
 
-
+        final Bitmap bitmap= BitmapFactory.decodeResource(mContext.getResources(),R.drawable.abc);
         FirebaseVisionFaceDetectorOptions options =
                 new FirebaseVisionFaceDetectorOptions.Builder()
                         .setPerformanceMode(FirebaseVisionFaceDetectorOptions.ACCURATE)
@@ -36,7 +54,7 @@ public class FaceActivity extends Activity {
                         .build();
         FirebaseVisionFaceDetector detector = FirebaseVision.getInstance()
                 .getVisionFaceDetector(options);
-        
+
         FirebaseVisionImage image =FirebaseVisionImage.fromBitmap(bitmap);
         Task<List<FirebaseVisionFace>> result =
                 detector.detectInImage(image)
@@ -44,37 +62,45 @@ public class FaceActivity extends Activity {
                                 new OnSuccessListener<List<FirebaseVisionFace>>() {
                                     @Override
                                     public void onSuccess(List<FirebaseVisionFace> faces) {
+                                        final RelativeLayout relativeLayout_main=findViewById(R.id.RelativeLayout_main);
+
                                         // Task completed successfully
                                         for (FirebaseVisionFace face : faces) {
-                                            Rect bounds = face.getBoundingBox();
-                                            float rotY = face.getHeadEulerAngleY();  // Head is rotated to the right rotY degrees
-                                            float rotZ = face.getHeadEulerAngleZ();  // Head is tilted sideways rotZ degrees
 
                                             // If landmark detection was enabled (mouth, ears, eyes, cheeks, and
                                             // nose available):
-                                            FirebaseVisionFaceLandmark leftEar = face.getLandmark(FirebaseVisionFaceLandmark.LEFT_EAR);
-                                            if (leftEar != null) {
-                                                FirebaseVisionPoint leftEarPos = leftEar.getPosition();
-                                            }
+                                            FirebaseVisionFaceLandmark leftEye = face.getLandmark(FirebaseVisionFaceLandmark.LEFT_EYE);
+                                            float lex = leftEye.getPosition().getX();
+                                            float ley = leftEye.getPosition().getY();
 
-                                            // If contour detection was enabled:
-                                            List<FirebaseVisionPoint> leftEyeContour =
-                                                    face.getContour(FirebaseVisionFaceContour.LEFT_EYE).getPoints();
-                                            List<FirebaseVisionPoint> upperLipBottomContour =
-                                                    face.getContour(FirebaseVisionFaceContour.UPPER_LIP_BOTTOM).getPoints();
+                                            FirebaseVisionFaceLandmark leftCheek = face.getLandmark(FirebaseVisionFaceLandmark.LEFT_CHEEK);
+                                            float lcx = leftCheek.getPosition().getX();
+                                            float lcy = leftCheek.getPosition().getY();
 
-                                            // If classification was enabled:
-                                            if (face.getSmilingProbability() != FirebaseVisionFace.UNCOMPUTED_PROBABILITY) {
-                                                float smileProb = face.getSmilingProbability();
-                                            }
-                                            if (face.getRightEyeOpenProbability() != FirebaseVisionFace.UNCOMPUTED_PROBABILITY) {
-                                                float rightEyeOpenProb = face.getRightEyeOpenProbability();
-                                            }
+                                            FirebaseVisionFaceLandmark rightCheek = face.getLandmark(FirebaseVisionFaceLandmark.RIGHT_CHEEK);
+                                            float rex = rightCheek.getPosition().getX();
+                                            float rey = rightCheek.getPosition().getY();
 
-                                            // If face tracking was enabled:
-                                            if (face.getTrackingId() != FirebaseVisionFace.INVALID_ID) {
-                                                int id = face.getTrackingId();
-                                            }
+                                            ImageView imageLE = new ImageView(mContext);
+                                            imageLE.setImageResource(R.drawable.wine);
+                                            imageLE.setX(p.x * lex / bitmap.getWidth()- 100);
+                                            imageLE.setY(p.y * ley / bitmap.getHeight()- 100);
+
+                                            imageLE.setLayoutParams(new RelativeLayout.LayoutParams(200, 200));
+
+                                            relativeLayout_main.addView(imageLE);
+                                            ImageView imageLC = new ImageView(mContext);
+                                            imageLC.setImageResource(R.drawable.wine);
+                                            imageLC.setX(p.x * lcx / bitmap.getWidth() - 100);
+                                            imageLC.setY(p.y * lcy / bitmap.getHeight() - 100);
+                                            imageLC.setLayoutParams(new RelativeLayout.LayoutParams(200, 200));
+                                            relativeLayout_main.addView(imageLC);
+                                            ImageView imageRC = new ImageView(mContext);
+                                            imageRC.setImageResource(R.drawable.wine2);
+                                            relativeLayout_main.addView(imageRC);
+                                            imageRC.setX(p.x * rex / bitmap.getWidth()- 100);
+                                            imageRC.setY(p.y * rey / bitmap.getHeight()- 100);
+                                            imageRC.setLayoutParams(new RelativeLayout.LayoutParams(200, 200));
                                         }
                                     }
                                 })
