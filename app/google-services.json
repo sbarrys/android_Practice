@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "209439045261",
+    "firebase_url": "https://facedetectpractice.firebaseio.com",
+    "project_id": "facedetectpractice",
+    "storage_bucket": "facedetectpractice.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209439045261:android:00777f7b402318a7f914c4",
+        "android_client_info": {
+          "package_name": "com.kty.first"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "209439045261-tv1l144tuk06bi30todkhhlnnpd1r7kj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaqx-EL46bmFy9GtbzlBHAKIvYwTmwqLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "209439045261-tv1l144tuk06bi30todkhhlnnpd1r7kj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--얼굴사진을 보여주고 -->
+    <!--얼굴 위에 눈에 멍든 사진 올려주기-->
+    <!--볼에 고양이 수염 그리기-->
+
+    <ImageView
+        android:id="@+id/ImageView_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/KakaoTalk_20200301_193348751"
+        android:adjustViewBounds="true"/><!--세개를 만들어주지 않는 이유는 앞으로 여러가지 추가할수 있도록-->
+</RelativeLayout>
