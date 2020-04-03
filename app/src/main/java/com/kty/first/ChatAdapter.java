@@ -38,9 +38,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)//생성자
-    public ChatAdapter(List<ChatData> myDataset, Context context,String myNickName) {
+    public ChatAdapter(List<ChatData> myDataset, Context context,String myNick) {
         mDataset = myDataset;
         Fresco.initialize(context);
+        myNickName= myNick;
     }
 
 
