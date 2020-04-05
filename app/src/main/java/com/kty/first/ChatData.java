@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ChatData extends AppCompatActivity {
+public class ChatData  {
     private String nickname;
     private String message;
 
